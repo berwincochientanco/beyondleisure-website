@@ -125,7 +125,6 @@ const Masterplan = () => {
               <em style={{ fontStyle: 'italic', color: 'var(--teak-grain)' }}>drawn slowly.</em>
             </h2>
           </div>
-          {!isMobile && <Button variant="ghost" icon>Download Masterplan PDF</Button>}
         </div>
 
         <div style={{ position: 'relative', width: '100%', aspectRatio: isMobile ? '4/3' : '16/9', backgroundImage: `url(${IMG.masterplan})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--sand-flat)', marginBottom: 40 }}>
@@ -150,11 +149,6 @@ const Masterplan = () => {
           </div>
         </div>
 
-        {isMobile && (
-          <div style={{ marginBottom: 32 }}>
-            <Button variant="secondary" size="md" icon>Download Masterplan PDF</Button>
-          </div>
-        )}
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', borderTop: '1px solid var(--sand-flat)', borderBottom: '1px solid var(--sand-flat)' }}>
           {stats.map((s, i) => (
