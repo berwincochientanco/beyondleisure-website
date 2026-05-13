@@ -142,9 +142,9 @@ const Masterplan = () => {
                 Plot Footprint · 36 Titles
               </div>
               {[
-                { swatch: '#E07856', label: 'Tier 3 · Beachfront' },
-                { swatch: '#8B7CC4', label: 'Tier 2 · Mid-Slope' },
                 { swatch: '#E0A856', label: 'Tier 1 · Interior' },
+                { swatch: '#8B7CC4', label: 'Tier 2 · Mid-Slope' },
+                { swatch: '#E07856', label: 'Tier 3 · Beachfront' },
               ].map((row) => (
                 <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span style={{ width: 14, height: 14, borderRadius: 2, background: row.swatch, border: '1px solid rgba(28,43,26,0.35)', flexShrink: 0 }} />
