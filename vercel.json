@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/brand_assets/Gili Gede/index.html" },
+    { "source": "/(.*)", "destination": "/brand_assets/Gili Gede/$1" }
+  ]
+}
