@@ -129,10 +129,18 @@ const Masterplan = () => {
 
         <div style={{ position: 'relative', width: '100%', aspectRatio: isMobile ? '4/3' : '16/9', backgroundImage: `url(${IMG.masterplan})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--sand-flat)', marginBottom: 40 }}>
           {isMobile ? (
-            /* Mobile: swatches only, no text */
-            <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(250,248,244,0.88)', backdropFilter: 'blur(8px)', padding: '6px', borderRadius: 4, border: '1px solid var(--sand-flat)', display: 'flex', flexDirection: 'column', gap: 4 }}>
-              {['#E07856','#8B7CC4','#E0A856'].map((c) => (
-                <span key={c} style={{ width: 10, height: 10, borderRadius: 2, background: c, border: '1px solid rgba(28,43,26,0.35)', display: 'block' }} />
+            /* Mobile: compact legend with text */
+            <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(250,248,244,0.92)', backdropFilter: 'blur(8px)', padding: '7px 9px', borderRadius: 4, border: '1px solid var(--sand-flat)', display: 'flex', flexDirection: 'column', gap: 5 }}>
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: 7, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--sage-hillside)', paddingBottom: 5, borderBottom: '1px solid var(--sand-flat)' }}>Plots · 36</div>
+              {[
+                { swatch: '#E0A856', label: 'T1 · Beachfront' },
+                { swatch: '#8B7CC4', label: 'T2 · Mid-Slope' },
+                { swatch: '#E07856', label: 'T3 · Interior' },
+              ].map((row) => (
+                <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: 2, background: row.swatch, border: '1px solid rgba(28,43,26,0.35)', flexShrink: 0 }} />
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 8, letterSpacing: 0.3, textTransform: 'uppercase', color: 'var(--deep-canopy)', whiteSpace: 'nowrap' }}>{row.label}</span>
+                </div>
               ))}
             </div>
           ) : (
