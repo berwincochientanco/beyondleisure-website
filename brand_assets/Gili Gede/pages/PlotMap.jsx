@@ -23,6 +23,7 @@ const fmtIDR_full = (n) => 'IDR ' + (n / 1000000).toFixed(1) + ' M';
 const fmtUSD_full = (n) => 'USD ' + n.toLocaleString('en-US');
 
 const PlotMap = ({ tweaks, setTweak }) => {
+  const { isMobile, isTablet } = useBreakpoint();
   const currency = tweaks.plotCurrency;       // 'idr' | 'usd' | 'both'
   const highlight = tweaks.tierHighlight;     // 'all' | 'Interior' | 'Mid-Slope' | 'Beachfront'
   const mapSize = tweaks.mapSize;             // 'regular' | 'tall'
@@ -35,20 +36,22 @@ const PlotMap = ({ tweaks, setTweak }) => {
   return (
     <section id="masterplan-map" style={{
       background: '#fff',
-      padding: '120px 64px',
+      padding: isMobile ? '64px 20px' : '120px 64px',
       borderTop: '1px solid var(--sand-flat)'
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
         {/* ── Header ── */}
         <div style={{
-          display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
-          marginBottom: 48, gap: 32, flexWrap: 'wrap'
+          display: 'flex', flexDirection: isMobile ? 'column' : 'row',
+          alignItems: isMobile ? 'flex-start' : 'flex-end',
+          justifyContent: 'space-between',
+          marginBottom: isMobile ? 28 : 48, gap: isMobile ? 20 : 32, flexWrap: 'wrap'
         }}>
           <div style={{ maxWidth: 640 }}>
             <Eyebrow style={{ marginBottom: 18 }}>— The Masterplan —</Eyebrow>
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 300,
-              fontSize: 44, lineHeight: 1.1, color: 'var(--deep-canopy)',
+              fontSize: isMobile ? 28 : 44, lineHeight: 1.1, color: 'var(--deep-canopy)',
               letterSpacing: '-0.7px', margin: 0, marginBottom: 18
             }}>
               The bay, plot by plot —{' '}
@@ -101,31 +104,35 @@ const PlotMap = ({ tweaks, setTweak }) => {
         {/* ── Two-column: map + plot grid ── */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)',
-          gap: 40, alignItems: 'flex-start'
+          gridTemplateColumns: isMobile || isTablet ? '1fr' : 'minmax(0, 1.15fr) minmax(0, 1fr)',
+          gap: isMobile ? 28 : 40, alignItems: 'flex-start'
         }}>
           {/* ── Map column ── */}
           <div style={{
-            position: 'sticky', top: 24,
+            position: isMobile ? 'static' : 'sticky', top: 24,
             background: 'var(--coconut-cream)',
             borderRadius: 10,
             border: '1px solid var(--sand-flat)',
-            padding: 18,
+            padding: isMobile ? 12 : 18,
             boxShadow: 'var(--shadow-sm)'
           }}>
             <div style={{
               position: 'relative',
-              width: '100%', height: mapHeight,
+              width: '100%',
+              height: isMobile ? undefined : mapHeight,
+              aspectRatio: isMobile ? '1 / 1' : undefined,
               borderRadius: 6, overflow: 'hidden',
-              background: '#D8D8D8'
+              background: '#F5F2EE'
             }}>
-              {/* Base image — dimmed when a single tier is selected */}
+              {/* Base image — contain on mobile so full map is always visible */}
               <img
                 src="shared/images/plot-map-1.jpeg"
                 alt="Gili Gede plot masterplan"
                 style={{
                   position: 'absolute', inset: 0,
-                  width: '100%', height: '100%', objectFit: 'cover',
+                  width: '100%', height: '100%',
+                  objectFit: isMobile ? 'contain' : 'cover',
+                  objectPosition: 'center',
                   filter: highlight === 'all' ? 'none' : 'saturate(0.18) brightness(0.96)',
                   transition: 'filter 0.45s ease'
                 }} />
@@ -138,7 +145,9 @@ const PlotMap = ({ tweaks, setTweak }) => {
                   aria-hidden="true"
                   style={{
                     position: 'absolute', inset: 0,
-                    width: '100%', height: '100%', objectFit: 'cover',
+                    width: '100%', height: '100%',
+                    objectFit: isMobile ? 'contain' : 'cover',
+                    objectPosition: 'center',
                     clipPath: TIER_CLIP[highlight],
                     WebkitClipPath: TIER_CLIP[highlight],
                     transition: 'clip-path 0.45s ease, -webkit-clip-path 0.45s ease'
@@ -255,8 +264,9 @@ const PlotMap = ({ tweaks, setTweak }) => {
 
             <div style={{
               display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10,
-              maxHeight: mapHeight + 80, overflowY: 'auto',
-              paddingRight: 4
+              maxHeight: isMobile ? 'none' : mapHeight + 80,
+              overflowY: isMobile ? 'visible' : 'auto',
+              paddingRight: isMobile ? 0 : 4
             }}>
               {visible.map((p) => {
                 const meta = TIER_META[p.tier];
