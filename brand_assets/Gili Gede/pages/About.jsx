@@ -128,21 +128,31 @@ const Masterplan = () => {
         </div>
 
         <div style={{ position: 'relative', width: '100%', aspectRatio: isMobile ? '4/3' : '16/9', backgroundImage: `url(${IMG.masterplan})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--sand-flat)', marginBottom: 40 }}>
-          <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(250,248,244,0.94)', backdropFilter: 'blur(10px)', padding: isMobile ? '7px 9px' : '14px 16px', borderRadius: 4, border: '1px solid var(--sand-flat)', display: 'flex', flexDirection: 'column', gap: isMobile ? 5 : 10, minWidth: isMobile ? 0 : 220 }}>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: isMobile ? 7 : 9, letterSpacing: isMobile ? 1.5 : 3, textTransform: 'uppercase', color: 'var(--sage-hillside)', paddingBottom: isMobile ? 5 : 8, borderBottom: '1px solid var(--sand-flat)' }}>
-              Plot Footprint · 36
+          {isMobile ? (
+            /* Mobile: swatches only, no text */
+            <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(250,248,244,0.88)', backdropFilter: 'blur(8px)', padding: '6px', borderRadius: 4, border: '1px solid var(--sand-flat)', display: 'flex', flexDirection: 'column', gap: 4 }}>
+              {['#E07856','#8B7CC4','#E0A856'].map((c) => (
+                <span key={c} style={{ width: 10, height: 10, borderRadius: 2, background: c, border: '1px solid rgba(28,43,26,0.35)', display: 'block' }} />
+              ))}
             </div>
-            {[
-              { swatch: '#E07856', label: 'Beachfront' },
-              { swatch: '#8B7CC4', label: 'Mid-Slope' },
-              { swatch: '#E0A856', label: 'Interior' },
-            ].map((row) => (
-              <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 6 : 10 }}>
-                <span style={{ width: isMobile ? 8 : 14, height: isMobile ? 8 : 14, borderRadius: 2, background: row.swatch, border: '1px solid rgba(28,43,26,0.35)', flexShrink: 0 }} />
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: isMobile ? 8 : 11, letterSpacing: isMobile ? 0.5 : 1, textTransform: 'uppercase', color: 'var(--deep-canopy)' }}>{row.label}</span>
+          ) : (
+            /* Desktop: full legend */
+            <div style={{ position: 'absolute', top: 16, right: 16, background: 'rgba(250,248,244,0.94)', backdropFilter: 'blur(10px)', padding: '14px 16px', borderRadius: 4, border: '1px solid var(--sand-flat)', display: 'flex', flexDirection: 'column', gap: 10, minWidth: 220 }}>
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--sage-hillside)', paddingBottom: 8, borderBottom: '1px solid var(--sand-flat)' }}>
+                Plot Footprint · 36 Titles
               </div>
-            ))}
-          </div>
+              {[
+                { swatch: '#E07856', label: 'Tier 3 · Beachfront' },
+                { swatch: '#8B7CC4', label: 'Tier 2 · Mid-Slope' },
+                { swatch: '#E0A856', label: 'Tier 1 · Interior' },
+              ].map((row) => (
+                <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ width: 14, height: 14, borderRadius: 2, background: row.swatch, border: '1px solid rgba(28,43,26,0.35)', flexShrink: 0 }} />
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: 1, textTransform: 'uppercase', color: 'var(--deep-canopy)' }}>{row.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
           <div style={{ position: 'absolute', bottom: 16, left: 16, background: 'rgba(28,43,26,0.85)', backdropFilter: 'blur(10px)', padding: '10px 16px', borderRadius: 4, color: 'var(--coconut-cream)', fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: 1 }}>
             <div style={{ fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--teak-grain)', marginBottom: 3 }}>Drawn by</div>
             M2 Design Studio · 2025
