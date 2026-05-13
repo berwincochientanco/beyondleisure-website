@@ -130,7 +130,7 @@ const Masterplan = () => {
         <div style={{ position: 'relative', width: '100%', aspectRatio: isMobile ? '4/3' : '16/9', backgroundImage: `url(${IMG.masterplan})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--sand-flat)', marginBottom: 40 }}>
           {isMobile ? (
             /* Mobile: compact legend with text */
-            <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(250,248,244,0.92)', backdropFilter: 'blur(8px)', padding: '7px 9px', borderRadius: 4, border: '1px solid var(--sand-flat)', display: 'flex', flexDirection: 'column', gap: 5 }}>
+            <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(250,248,244,0.92)', backdropFilter: 'blur(8px)', padding: '7px 9px', borderRadius: 4, border: '1px solid var(--sand-flat)', display: 'flex', flexDirection: 'column', gap: 5 }}>
               <div style={{ fontFamily: 'var(--font-body)', fontSize: 7, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--sage-hillside)', paddingBottom: 5, borderBottom: '1px solid var(--sand-flat)' }}>Plots · 36</div>
               {[
                 { swatch: '#E0A856', label: 'T1 · Beachfront' },
