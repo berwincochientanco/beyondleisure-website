@@ -84,7 +84,7 @@ const Footer = () => {
             <div>
               <div style={{ fontFamily: 'var(--font-body)', fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--sage-light)', marginBottom: 18 }}>COMPANY</div>
               <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.9, color: 'rgba(250,248,244,0.7)' }}>
-                PT Gili Gede Property
+                PT Gili Gede PropertyB
               </div>
               <div style={{ fontFamily: 'var(--font-body)', fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--sage-light)', marginTop: 28, marginBottom: 12 }}>Direct</div>
               <a href="mailto:info@beyondleisure.com" style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 300, color: 'var(--coconut-cream)', textDecoration: 'none', borderBottom: '1px solid var(--teak-grain)', paddingBottom: 2 }}>
