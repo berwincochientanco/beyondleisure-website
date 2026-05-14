@@ -262,9 +262,6 @@ const ReserveCTA = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'flex-start' }}>
           <Button variant="teak" size="lg" icon href="contact.html">Reserve a Plot</Button>
           <Button variant="outlineLight" size="md" href="contact.html#process">View 6-Step Process</Button>
-          <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: 1, color: 'var(--sage-light)', marginTop: 10, fontStyle: 'italic' }}>
-            Held in escrow with Notaris Sutarno · Mataram
-          </div>
         </div>
       </div>
     </section>
