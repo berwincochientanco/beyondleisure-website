@@ -59,15 +59,19 @@ const Footer = () => {
             </div>
           )}
           <div style={{ display: 'flex', gap: 12 }}>
-            {['IG', 'in', '@'].map((x) => (
-              <a key={x} href="#" style={{
+            {[
+              { label: 'IG', href: 'https://www.instagram.com/beyondleisureindonesia?igsh=MXhiM21ycGhiaHRoMg==' },
+              { label: 'in', href: '#' },
+              { label: '@',  href: '#' },
+            ].map((x) => (
+              <a key={x.label} href={x.href} target={x.href !== '#' ? '_blank' : undefined} rel={x.href !== '#' ? 'noopener noreferrer' : undefined} style={{
                 width: 40, height: 40, borderRadius: 999,
                 border: '1px solid rgba(250,248,244,0.25)',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 color: 'var(--coconut-cream)', textDecoration: 'none',
                 fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: 1,
                 transition: 'all 0.2s ease',
-              }}>{x}</a>
+              }}>{x.label}</a>
             ))}
           </div>
         </div>
