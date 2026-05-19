@@ -61,7 +61,7 @@ const Footer = () => {
           <div style={{ display: 'flex', gap: 12 }}>
             {[
               { label: 'IG', href: 'https://www.instagram.com/beyondleisureindonesia?igsh=MXhiM21ycGhiaHRoMg==' },
-              { label: 'in', href: '#' },
+              { label: 'in', href: 'https://www.linkedin.com/in/beyond-leisure-376a1140b?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
               { label: '@',  href: '#' },
             ].map((x) => (
               <a key={x.label} href={x.href} target={x.href !== '#' ? '_blank' : undefined} rel={x.href !== '#' ? 'noopener noreferrer' : undefined} style={{
