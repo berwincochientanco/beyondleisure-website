@@ -62,7 +62,7 @@ const Footer = () => {
             {[
               { label: 'IG', href: 'https://www.instagram.com/beyondleisureindonesia?igsh=MXhiM21ycGhiaHRoMg==' },
               { label: 'in', href: 'https://www.linkedin.com/in/beyond-leisure-376a1140b?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
-              { label: '@',  href: '#' },
+              { label: 'F',  href: 'https://www.facebook.com/profile.php?id=61589739106990' },
             ].map((x) => (
               <a key={x.label} href={x.href} target={x.href !== '#' ? '_blank' : undefined} rel={x.href !== '#' ? 'noopener noreferrer' : undefined} style={{
                 width: 40, height: 40, borderRadius: 999,
